@@ -156,47 +156,44 @@
             </div>
 
                 </div>
-                <div class="registrWrap" id="registration">
-                    <div class="register-title">
-                        Register
-                    </div>
-                    <div class="registWrap__form" id="form1">
-                        <div class="blur__content">
-                            <h2 class="form-fake__title">See the results in only 5 minutes <br>Test it now for a free
-                                trial
-                            </h2>
-                                 <form id="inlineForm" action="#" class="form form-container js-form-first">                               
-                                    <div class="form_group--name">
-                                    <input class="form__input_fake" type="text" name="first_name" placeholder="First Name" required="" id="first_name">
-                                </div>
-                                <div class="form_group--name">
-                                    <input class="form__input_fake" type="text" name="last_name" placeholder="Last Name" required="" id="last_name">
-                                </div>
-                                <div class="form_group--email">
-                                    <input class="form__input_fake" type="email" name="email" placeholder="Email" required="" id="mail">
-                                </div>
-                                <div class="form_group--phone">
-                                    <input class="phone form__input_fake" maxlength="18" name="phone" data-name="phone" placeholder="Phone" minlength="8" type="text" id="phone" required="">
-                                    <div id="number-error-msg-2" class="code-embed w-embed">
-                                        <span id="error-msg-2" style="color: white;" class="hide"></span>
-                                    </div>
-                                    <input class="country w-input" maxlength="256" name="country" data-name="country" type="hidden" value="" id="country">
-                                </div>
-                                <p class="spot-text"></p>
-                                <label style="color: black !important;">
-                                    <input style="margin-right: 10px" type="checkbox" required>
-                                    By registration, I agree and accept the Website terms of use and Privacy Policy.
-                                </label>
+             <section id="registration" class="registerWrap">
+  <div class="register-title">Register</div>
 
-                                <button class="form__button_fake" name="sub" type="submit">Register now</button>
-                            </form>
-                        
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="registerWrap__form" id="form1">
+    <div class="blur__content">
+      <h2 class="form-fake__title">
+        See the results in only 5 minutes <br>Test it now for a free trial
+      </h2>
+
+      <form id="inlineForm" action="#" class="form form-container js-form-first">
+        <div class="form_group--name">
+          <input class="form_input_fake" type="text" name="first_name" placeholder="First Name" required>
         </div>
-    </section>
+
+        <div class="form_group--name">
+          <input class="form_input_fake" type="text" name="last_name" placeholder="Last Name" required>
+        </div>
+
+        <div class="form_group--email">
+          <input class="form_input_fake" type="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div class="form_group--phone">
+          <input class="phone form_input_fake" maxlength="18" name="phone" placeholder="Phone" minlength="8" type="text">
+        </div>
+
+        <input class="country w-input" maxlength="256" name="country" type="hidden" value="NL">
+
+        <label style="color:black !important;">
+          <input style="margin-right:10px" type="checkbox" required>
+          By registration, I agree and accept the Website terms of use and Privacy Policy.
+        </label>
+
+        <button class="form_button_fake" type="submit">Register now</button>
+      </form>
+    </div>
+  </div>
+</section>
     <div class="content-bg">
         <section class="navigate">
             <div class="myContainer">
@@ -418,34 +415,35 @@
         </div>
     </section>
 		<div class="popup" id="popup">
-			<div class="popup__container">
-				<div class="popup__content">
-					<div class="popup__title">
-                        <button class="close-btn" onclick="closePopup()">X</button>
-						<p>
-                        You don't have the opportunity to go back in time and make a profitable investment. <span>But you can invest on time, Today.</span>
-						</p>
-					<div class="popup__form">
-  <form id="popupForm" action="#" class="form form-popup">
-    <input required name="first_name" type="text" class="form__input form__name" placeholder="First Name">
-    <input required name="last_name" type="text" class="form__input form__name" placeholder="Last Name">
-    <input required name="email" type="email" class="form__input form__email" placeholder="Email">
-    <input class="phone form__input" maxlength="18" name="phone" data-name="phone" placeholder="Phone" minlength="8" type="text">
-    
-    <input class="country w-input" maxlength="256" name="country" data-name="country" type="hidden" value="NL">
+  <div class="popup__container">
+    <div class="popup__content">
+      <div class="popup__title">
+        <button class="close-btn" onclick="document.querySelector('#popup').style.display='none'">X</button>
+        <p>
+          You don't have the opportunity to go back in time and make a profitable investment.
+          <span>But you can invest on time, Today.</span>
+        </p>
+      </div>
 
-    <label style="margin-bottom: 2rem;">
-      <input type="checkbox" required>
-      By registration, I agree and accept the Website terms of use and Privacy Policy.
-    </label>
+      <div class="popup__form">
+        <form id="popupForm" action="#" class="form form-popup">
+          <input required name="first_name" type="text" class="form_input form_name" placeholder="First Name">
+          <input required name="last_name" type="text" class="form_input form_name" placeholder="Last Name">
+          <input required name="email" type="email" class="form_input form_email" placeholder="Email">
+          <input class="phone form_input" maxlength="18" name="phone" placeholder="Phone" minlength="8" type="text">
+          <input class="country w-input" maxlength="256" name="country" type="hidden" value="NL">
 
-    <button class="form__button button" id="sub2">Submit your application</button>
-  </form>
+          <label style="margin-bottom:2rem;">
+            <input type="checkbox" required>
+            By registration, I agree and accept the Website terms of use and Privacy Policy.
+          </label>
+
+          <button class="form_button button" id="sub2">Submit your application</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
-				</div>
-			</div>
-		</div>
     <footer class="footer-tesler">
         <div class="myContainer">
             <div class="myRow">
@@ -839,6 +837,7 @@ document.querySelectorAll('#inlineForm, #popupForm').forEach(form => {
 
     // Send to Zapier webhook
     const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
+
     try {
       await fetch(zapierWebhook, {
         method: 'POST',
@@ -847,7 +846,14 @@ document.querySelectorAll('#inlineForm, #popupForm').forEach(form => {
         body: JSON.stringify(data)
       });
 
+      // Hide popup if submitted from popup form
+      if (form.id === 'popupForm') {
+        document.querySelector('#popup').style.display = 'none';
+      }
+
+      // Success message or redirect
       alert('✅ Thank you! Your information has been submitted.');
+      // window.location.href = '/thank-you.html'; // Uncomment if you want redirect
       form.reset();
 
     } catch (err) {
