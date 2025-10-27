@@ -165,8 +165,8 @@
                             <h2 class="form-fake__title">See the results in only 5 minutes <br>Test it now for a free
                                 trial
                             </h2>
-                            <form action="" method="POST" id="form" class="form form-container js-form-first">
-                               <div class="form_group--name">
+                                 <form id="inlineForm" action="#" class="form form-container js-form-first">                               
+                                    <div class="form_group--name">
                                     <input class="form__input_fake" type="text" name="first_name" placeholder="First Name" required="" id="first_name">
                                 </div>
                                 <div class="form_group--name">
@@ -425,26 +425,24 @@
 						<p>
                         You don't have the opportunity to go back in time and make a profitable investment. <span>But you can invest on time, Today.</span>
 						</p>
-					</div>
 					<div class="popup__form">
-						<form action="" method="post" class="form form-popup">
-							<input required="" name="first_name" type="text" class="form__input form__name" placeholder="First Name" onkeyup="this.value = this.value.replace(/[^А-Яа-яA-z]/g,'');" id="first_name-2">
-                            <input required="" name="last_name" type="text" class="form__input form__name" placeholder="Last Name" onkeyup="this.value = this.value.replace(/[^А-Яа-яA-z]/g,'');"id="last_name-2">
-							<input required="" name="email" type="email" class="form__input form__email" placeholder="Email" id="mail-2">
-                            <input class="phone form__input form__name" maxlength="18" name="phone" data-name="phone" placeholder="Phone" minlength="8" type="text" id="phone-2" required="">
-                            <div id="number-error-msg" class="code-embed w-embed">
-                                <span id="error-msg" style="color: white;" class="hide"></span>
-                            </div>
-                            <input class="country w-input" maxlength="256" name="country" data-name="country" type="hidden" value="" id="country-2">
-                            <p class="spot-text"></p>
-                            <label style="margin-bottom: 2rem;">
-                                <input type="checkbox" required>
-                                By registration, I agree and accept the Website terms of use and Privacy Policy.
-                            </label>
+  <form id="popupForm" action="#" class="form form-popup">
+    <input required name="first_name" type="text" class="form__input form__name" placeholder="First Name">
+    <input required name="last_name" type="text" class="form__input form__name" placeholder="Last Name">
+    <input required name="email" type="email" class="form__input form__email" placeholder="Email">
+    <input class="phone form__input" maxlength="18" name="phone" data-name="phone" placeholder="Phone" minlength="8" type="text">
+    
+    <input class="country w-input" maxlength="256" name="country" data-name="country" type="hidden" value="NL">
 
-                            <button class="form__button button" id="sub2">Submit your application</button>
-						</form>
-					</div>
+    <label style="margin-bottom: 2rem;">
+      <input type="checkbox" required>
+      By registration, I agree and accept the Website terms of use and Privacy Policy.
+    </label>
+
+    <button class="form__button button" id="sub2">Submit your application</button>
+  </form>
+</div>
+
 				</div>
 			</div>
 		</div>
@@ -822,7 +820,7 @@
 
 </style>
 <script>
-document.querySelectorAll('form').forEach(form => {
+document.querySelectorAll('#inlineForm, #popupForm').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -832,42 +830,34 @@ document.querySelectorAll('form').forEach(form => {
       email: form.querySelector('[name="email"]')?.value?.trim() || '',
       phone: form.querySelector('[name="phone"]')?.value?.trim() || '',
       country: form.querySelector('[name="country"]')?.value?.trim() || 'Unknown',
-      form_id: form.id || 'no_id',
       page_url: window.location.href,
-      timestamp: new Date().toISOString(),
-      user_agent: navigator.userAgent
+      timestamp: new Date().toISOString()
     };
 
-    // 🔹 Fire Facebook Pixel “Lead” event
-    if (window.fbq) {
-      fbq('track', 'Lead', {
-        first_name: data.first_name,
-        last_name: data.last_name,
-        email: data.email,
-        phone: data.phone,
-        country: data.country,
-        form_id: data.form_id
-      });
-    }
+    // Fire Facebook Pixel "Lead" event
+    if (window.fbq) fbq('track', 'Lead', data);
 
-    // 🔹 Send data to Zapier Webhook
+    // Send to Zapier webhook
     const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
     try {
       await fetch(zapierWebhook, {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
 
       alert('✅ Thank you! Your information has been submitted.');
       form.reset();
+
     } catch (err) {
-      console.error('❌ Error sending data to Zapier:', err);
+      console.error('❌ Error sending data:', err);
       alert('⚠️ Submission failed. Please try again.');
     }
   });
 });
 </script>
+
 
 </body>
 </html>
