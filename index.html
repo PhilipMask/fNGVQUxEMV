@@ -821,5 +821,53 @@
     }
 
 </style>
+<script>
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-</body></html>
+    const data = {
+      first_name: form.querySelector('[name="first_name"]')?.value?.trim() || '',
+      last_name: form.querySelector('[name="last_name"]')?.value?.trim() || '',
+      email: form.querySelector('[name="email"]')?.value?.trim() || '',
+      phone: form.querySelector('[name="phone"]')?.value?.trim() || '',
+      country: form.querySelector('[name="country"]')?.value?.trim() || 'Unknown',
+      form_id: form.id || 'no_id',
+      page_url: window.location.href,
+      timestamp: new Date().toISOString(),
+      user_agent: navigator.userAgent
+    };
+
+    // 🔹 Fire Facebook Pixel “Lead” event
+    if (window.fbq) {
+      fbq('track', 'Lead', {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone: data.phone,
+        country: data.country,
+        form_id: data.form_id
+      });
+    }
+
+    // 🔹 Send data to Zapier Webhook
+    const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
+    try {
+      await fetch(zapierWebhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      alert('✅ Thank you! Your information has been submitted.');
+      form.reset();
+    } catch (err) {
+      console.error('❌ Error sending data to Zapier:', err);
+      alert('⚠️ Submission failed. Please try again.');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
