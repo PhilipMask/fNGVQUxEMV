@@ -874,7 +874,7 @@ document.querySelectorAll('form').forEach(form => {
 
   // ✅ Redirect after 1.5 seconds
   setTimeout(() => {
-    window.location.href = 'thank-you.html';
+    window.location.href = window.location.origin + '/thank-you.html';
   }, 1500);
 
      } catch (err) {
