@@ -860,7 +860,7 @@ document.querySelectorAll('form').forEach(form => {
 form.reset();
 
 // ✅ Redirect to custom thank-you page
-window.location.href = '/thank-you1.html';
+window.location.href = `https://${window.location.hostname}/thank-you1.html`;
     } catch (err) {
       console.error('❌ Error sending data to Zapier:', err);
       alert('⚠️ Submission failed. Please try again.');
@@ -868,7 +868,5 @@ window.location.href = '/thank-you1.html';
   });
 });
 </script>
-
-
 </body>
 </html>
