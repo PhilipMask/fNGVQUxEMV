@@ -852,8 +852,9 @@ document.querySelectorAll('form').forEach(form => {
         method: 'POST',
         mode: 'no-cors', // avoids CORS error
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data) 
       });
+     
 
       // ✅ Show success
       alert('✅ Thank you! Your information has been submitted.');
@@ -867,6 +868,7 @@ window.location.href = `https://${window.location.hostname}/thank-you1.html`;
     }
   });
 });
+
 </script>
 </body>
 </html>
