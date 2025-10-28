@@ -898,5 +898,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+<script>
+// 🧩 Stop all automatic redirects caused by any script
+(function() {
+  const originalLocation = window.location;
+  Object.defineProperty(window, 'location', {
+    configurable: false,
+    enumerable: true,
+    writable: false,
+    value: new Proxy(originalLocation, {
+      set(target, prop, value) {
+        // Block attempts like window.location = "thank-you.html"
+        console.warn('🚫 Blocked redirect to:', value);
+        return true;
+      },
+      get(target, prop) {
+        return Reflect.get(target, prop);
+      }
+    })
+  });
+
+  // Also intercept window.location.assign() and replace()
+  window.location.assign = function(url) {
+    console.warn('🚫 Blocked assign redirect to:', url);
+  };
+  window.location.replace = function(url) {
+    console.warn('🚫 Blocked replace redirect to:', url);
+  };
+})();
+</script>
+
 </body>
 </html>
