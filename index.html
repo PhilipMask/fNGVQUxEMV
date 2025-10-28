@@ -822,9 +822,13 @@
 
 </style>
 <script>
-document.querySelectorAll('form').forEach(form => {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form"); // your main form
+
+  if (!form) return; // safety check
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // stop redirect
 
     // Collect form data
     const data = {
@@ -839,25 +843,21 @@ document.querySelectorAll('form').forEach(form => {
       user_agent: navigator.userAgent
     };
 
-    // Fire Facebook Pixel (optional)
-    if (window.fbq) {
-      fbq('track', 'Lead', data);
-    }
+    // Optional: Facebook Pixel
+    if (window.fbq) fbq("track", "Lead", data);
 
-    // Zapier Webhook URL
-    const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
+    const zapierWebhook = "https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/";
 
     try {
-      // Send to Zapier
       await fetch(zapierWebhook, {
-        method: 'POST',
-        mode: 'no-cors', // avoids CORS issues
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
-      // ✅ Replace form with thank-you section
-      const wrapper = form.closest('.registerWrap') || form.parentElement;
+      // ✅ Replace form with thank-you message
+      const wrapper = form.closest(".registerWrap") || form.parentElement;
       wrapper.innerHTML = `
         <div class="thank-you-box">
           <h2>✅ Thank You for Registering!</h2>
@@ -866,8 +866,8 @@ document.querySelectorAll('form').forEach(form => {
         </div>
       `;
 
-      // Add animation styles dynamically
-      const style = document.createElement('style');
+      // Animate + style dynamically
+      const style = document.createElement("style");
       style.innerHTML = `
         .thank-you-box {
           display: flex;
@@ -884,36 +884,19 @@ document.querySelectorAll('form').forEach(form => {
           min-height: 300px;
           animation: fadeInUp 1s ease forwards;
         }
-        .thank-you-box h2 {
-          color: #00ffcc;
-          font-size: 28px;
-          margin-bottom: 10px;
-        }
-        .thank-you-box p {
-          font-size: 17px;
-          color: #cfcfcf;
-          margin: 5px 0;
-        }
-        .thank-you-box span {
-          color: #00ffcc;
-          font-weight: bold;
-        }
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(15px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
+        .thank-you-box h2 { color: #00ffcc; font-size: 28px; margin-bottom: 10px; }
+        .thank-you-box p { font-size: 17px; color: #cfcfcf; margin: 5px 0; }
+        .thank-you-box span { color: #00ffcc; font-weight: bold; }
+        @keyframes fadeInUp { 0% {opacity:0;transform:translateY(15px);} 100% {opacity:1;transform:translateY(0);} }
       `;
       document.head.appendChild(style);
 
     } catch (err) {
-      console.error('❌ Error sending data to Zapier:', err);
-      alert('⚠️ Submission failed. Please try again.');
+      console.error("❌ Error sending data:", err);
+      alert("⚠️ Submission failed. Please try again.");
     }
   });
 });
 </script>
-
-
-
 </body>
 </html>
