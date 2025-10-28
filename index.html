@@ -822,19 +822,6 @@
 
 </style>
 <script>
-// 🧩 Smarter prevention: only block the forms you control
-document.addEventListener('submit', function (e) {
-  const form = e.target;
-
-  // Only intercept if it's your main registration form
-  if (form.matches('#form, #popupForm')) {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-  }
-}, true);
-</script>
-
-<script>
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -852,18 +839,24 @@ document.querySelectorAll('form').forEach(form => {
       user_agent: navigator.userAgent
     };
 
-    if (window.fbq) fbq('track', 'Lead', data);
+    // Fire Facebook Pixel (optional)
+    if (window.fbq) {
+      fbq('track', 'Lead', data);
+    }
 
+    // Zapier Webhook URL
     const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
 
     try {
+      // Send to Zapier
       await fetch(zapierWebhook, {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'no-cors', // avoids CORS issues
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
 
+      // ✅ Replace form with thank-you section
       const wrapper = form.closest('.registerWrap') || form.parentElement;
       wrapper.innerHTML = `
         <div class="thank-you-box">
@@ -873,6 +866,7 @@ document.querySelectorAll('form').forEach(form => {
         </div>
       `;
 
+      // Add animation styles dynamically
       const style = document.createElement('style');
       style.innerHTML = `
         .thank-you-box {
@@ -918,7 +912,6 @@ document.querySelectorAll('form').forEach(form => {
   });
 });
 </script>
-
 
 
 
