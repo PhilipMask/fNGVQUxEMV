@@ -826,67 +826,93 @@ document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // ✅ Grab all fields safely, checking both inline & popup forms
+    // Collect form data
     const data = {
-      first_name: form.querySelector('input[id*="first_name"], input[name*="first_name"]')?.value?.trim() || '',
-      last_name: form.querySelector('input[id*="last_name"], input[name*="last_name"]')?.value?.trim() || '',
-      email: form.querySelector('input[id*="mail"], input[name*="email"]')?.value?.trim() || '',
-      phone: form.querySelector('input[id*="phone"], input[name*="phone"]')?.value?.trim() || '',
-      country: form.querySelector('input[id*="country"], input[name*="country"]')?.value?.trim() || 'Unknown',
+      first_name: form.querySelector('[name="first_name"]')?.value.trim() || '',
+      last_name: form.querySelector('[name="last_name"]')?.value.trim() || '',
+      email: form.querySelector('[name="email"]')?.value.trim() || '',
+      phone: form.querySelector('[name="phone"]')?.value.trim() || '',
+      country: form.querySelector('[name="country"]')?.value.trim() || 'Unknown',
       form_id: form.id || 'no_id',
       page_url: window.location.href,
       timestamp: new Date().toISOString(),
       user_agent: navigator.userAgent
     };
 
-    console.log("✅ Form data captured:", data); // check in console
+    // Fire Facebook Pixel (optional)
+    if (window.fbq) {
+      fbq('track', 'Lead', data);
+    }
 
-    // ✅ Fire Facebook Pixel “Lead”
-    if (window.fbq) fbq('track', 'Lead', data);
-
-    // ✅ Send to Zapier Webhook
+    // Zapier Webhook URL
     const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
 
-   try {
-  // Send to Zapier Webhook
-  await fetch(zapierWebhook, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
+    try {
+      // Send to Zapier
+      await fetch(zapierWebhook, {
+        method: 'POST',
+        mode: 'no-cors', // avoids CORS issues
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
 
-  // ✅ Replace the form area with the thank-you message
-  const formContainer = form.closest('form'); // or use a wrapper div if needed
-  formContainer.innerHTML = `
-    <div style="
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      min-height:300px;
-      background:linear-gradient(135deg, #0a0f2c, #022c2c);
-      color:#00ffcc;
-      border-radius:12px;
-      padding:40px;
-      box-shadow:0 0 20px rgba(0,255,204,0.3);
-      font-family:'Segoe UI',sans-serif;
-    ">
-      <h2 style="color:#00ffcc; font-size:28px; margin-bottom:10px;">✅ Thank You for Registering!</h2>
-      <p style="font-size:18px; color:#d9d9d9;">You are now qualified for <span style="color:#00ffcc;">Tesler</span>.</p>
-      <p style="font-size:16px; color:#aaa;">One of our representatives will contact you shortly<br>to secure your spot and complete your setup.</p>
-    </div>
-  `;
+      // ✅ Replace form with thank-you section
+      const wrapper = form.closest('.registerWrap') || form.parentElement;
+      wrapper.innerHTML = `
+        <div class="thank-you-box">
+          <h2>✅ Thank You for Registering!</h2>
+          <p>You are now <span>qualified for Tesler</span>.</p>
+          <p>One of our representatives will contact you shortly<br>to secure your spot and complete your setup.</p>
+        </div>
+      `;
 
-} catch (err) {
-  console.error('❌ Error sending data to Zapier:', err);
-  alert('⚠️ Submission failed. Please try again.');
-}
+      // Add animation styles dynamically
+      const style = document.createElement('style');
+      style.innerHTML = `
+        .thank-you-box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          background: linear-gradient(135deg, #0a0f2c, #022c2c);
+          color: #00ffcc;
+          border-radius: 15px;
+          padding: 40px;
+          box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+          font-family: 'Segoe UI', sans-serif;
+          min-height: 300px;
+          animation: fadeInUp 1s ease forwards;
+        }
+        .thank-you-box h2 {
+          color: #00ffcc;
+          font-size: 28px;
+          margin-bottom: 10px;
+        }
+        .thank-you-box p {
+          font-size: 17px;
+          color: #cfcfcf;
+          margin: 5px 0;
+        }
+        .thank-you-box span {
+          color: #00ffcc;
+          font-weight: bold;
+        }
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(15px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+      `;
+      document.head.appendChild(style);
 
+    } catch (err) {
+      console.error('❌ Error sending data to Zapier:', err);
+      alert('⚠️ Submission failed. Please try again.');
+    }
   });
 });
 </script>
+
 
 
 </body>
