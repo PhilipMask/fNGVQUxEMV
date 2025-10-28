@@ -826,49 +826,38 @@ document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // ✅ Grab all fields safely, checking both inline & popup forms
     const data = {
-      first_name: form.querySelector('input[id*="first_name"], input[name*="first_name"]')?.value?.trim() || '',
-      last_name: form.querySelector('input[id*="last_name"], input[name*="last_name"]')?.value?.trim() || '',
-      email: form.querySelector('input[id*="mail"], input[name*="email"]')?.value?.trim() || '',
-      phone: form.querySelector('input[id*="phone"], input[name*="phone"]')?.value?.trim() || '',
-      country: form.querySelector('input[id*="country"], input[name*="country"]')?.value?.trim() || 'Unknown',
-      form_id: form.id || 'no_id',
+      first_name: form.querySelector('[name="first_name"]')?.value?.trim() || '',
+      last_name: form.querySelector('[name="last_name"]')?.value?.trim() || '',
+      email: form.querySelector('[name="email"]')?.value?.trim() || '',
+      phone: form.querySelector('[name="phone"]')?.value?.trim() || '',
+      country: form.querySelector('[name="country"]')?.value?.trim() || '',
+      form_id: 'tesler-main',
+      subdomain: window.location.hostname,
       page_url: window.location.href,
       timestamp: new Date().toISOString(),
       user_agent: navigator.userAgent
     };
 
-    console.log("✅ Form data captured:", data); // check in console
-
-    // ✅ Fire Facebook Pixel “Lead”
-    if (window.fbq) fbq('track', 'Lead', data);
-
-    // ✅ Send to Zapier Webhook
     const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
 
     try {
       await fetch(zapierWebhook, {
         method: 'POST',
-        mode: 'no-cors', // avoids CORS error
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data) 
+        body: JSON.stringify(data)
       });
-     
 
-      // ✅ Show success
-      alert('✅ Thank you! Your information has been submitted.');
-form.reset();
-
-// ✅ Redirect to custom thank-you page
-window.location.href = `https://${window.location.hostname}/thank-you1.html`;
+      // ✅ Redirect to thank-you page
+      window.location.href = `https://${window.location.hostname}/thank-you1.html`;
     } catch (err) {
       console.error('❌ Error sending data to Zapier:', err);
       alert('⚠️ Submission failed. Please try again.');
     }
   });
 });
-
 </script>
+
 </body>
 </html>
