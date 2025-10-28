@@ -847,40 +847,43 @@ document.querySelectorAll('form').forEach(form => {
     // ✅ Send to Zapier Webhook
     const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
 
-    try {
+   try {
   // Send to Zapier Webhook
   await fetch(zapierWebhook, {
     method: 'POST',
-    mode: 'no-cors', // prevents CORS error
+    mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });
 
-  // ✅ Optional: show a quick loader before redirect
-  document.body.innerHTML = `
+  // ✅ Replace the form area with the thank-you message
+  const formContainer = form.closest('form'); // or use a wrapper div if needed
+  formContainer.innerHTML = `
     <div style="
       display:flex;
+      flex-direction:column;
       justify-content:center;
       align-items:center;
-      height:100vh;
-      background:#000;
-      color:#00ff9d;
-      font-family:Segoe UI, sans-serif;
-      font-size:20px;
+      text-align:center;
+      min-height:300px;
+      background:linear-gradient(135deg, #0a0f2c, #022c2c);
+      color:#00ffcc;
+      border-radius:12px;
+      padding:40px;
+      box-shadow:0 0 20px rgba(0,255,204,0.3);
+      font-family:'Segoe UI',sans-serif;
     ">
-      Submitting your information... please wait.
+      <h2 style="color:#00ffcc; font-size:28px; margin-bottom:10px;">✅ Thank You for Registering!</h2>
+      <p style="font-size:18px; color:#d9d9d9;">You are now qualified for <span style="color:#00ffcc;">Tesler</span>.</p>
+      <p style="font-size:16px; color:#aaa;">One of our representatives will contact you shortly<br>to secure your spot and complete your setup.</p>
     </div>
   `;
 
-  // ✅ Redirect after 1.5 seconds
-  setTimeout(() => {
-    window.location.href = window.location.origin + '/thank-you.html';
-  }, 1500);
-
-     } catch (err) {
+} catch (err) {
   console.error('❌ Error sending data to Zapier:', err);
   alert('⚠️ Submission failed. Please try again.');
-     }
+}
+
   });
 });
 </script>
