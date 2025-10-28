@@ -822,10 +822,15 @@
 
 </style>
 <script>
-// 🧱 Prevent any other scripts or jQuery from hijacking the form submission
+// 🧩 Smarter prevention: only block the forms you control
 document.addEventListener('submit', function (e) {
-  e.preventDefault();
-  e.stopImmediatePropagation();
+  const form = e.target;
+
+  // Only intercept if it's your main registration form
+  if (form.matches('#form, #popupForm')) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  }
 }, true);
 </script>
 
