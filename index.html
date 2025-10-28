@@ -857,7 +857,11 @@ document.querySelectorAll('form').forEach(form => {
 
       // ✅ Show success
       alert('✅ Thank you! Your information has been submitted.');
-      form.reset();
+form.reset();
+
+// ✅ Redirect to custom thank-you page
+window.location.href = 'thank-you.html';
+
 
     } catch (err) {
       console.error('❌ Error sending data to Zapier:', err);
