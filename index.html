@@ -848,25 +848,39 @@ document.querySelectorAll('form').forEach(form => {
     const zapierWebhook = 'https://hooks.zapier.com/hooks/catch/21691543/uid5rk4/';
 
     try {
-      await fetch(zapierWebhook, {
-        method: 'POST',
-        mode: 'no-cors', // avoids CORS error
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+  // Send to Zapier Webhook
+  await fetch(zapierWebhook, {
+    method: 'POST',
+    mode: 'no-cors', // prevents CORS error
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
 
-      // ✅ Show success
-      alert('✅ Thank you! Your information has been submitted.');
-form.reset();
+  // ✅ Optional: show a quick loader before redirect
+  document.body.innerHTML = `
+    <div style="
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#000;
+      color:#00ff9d;
+      font-family:Segoe UI, sans-serif;
+      font-size:20px;
+    ">
+      Submitting your information... please wait.
+    </div>
+  `;
 
-// ✅ Redirect to custom thank-you page
-window.location.href = 'thank-you.html';
+  // ✅ Redirect after 1.5 seconds
+  setTimeout(() => {
+    window.location.href = 'thank-you.html';
+  }, 1500);
 
-
-    } catch (err) {
-      console.error('❌ Error sending data to Zapier:', err);
-      alert('⚠️ Submission failed. Please try again.');
-    }
+     } catch (err) {
+  console.error('❌ Error sending data to Zapier:', err);
+  alert('⚠️ Submission failed. Please try again.');
+     }
   });
 });
 </script>
